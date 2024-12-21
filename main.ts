@@ -124,7 +124,7 @@ namespace TM1637 {
         //% blockId="TM1637_showbit" block="%tm| 在第 %bit| 位显示数字 %num "
         //% weight=90 blockGap=8
         //% parts="TM1637"
-        showbit(num: number = 5, bit: number = 0) {
+        showbit(bit: number = 0, num: number = 5) {
             this.buf[bit % this.count] = _SEGMENTS[num % 16]
             this._dat(bit, _SEGMENTS[num % 16])
         }
@@ -227,7 +227,7 @@ namespace TM1637 {
      * @param count the count of the LED, eg: 4
      */
     //% weight=200 blockGap=8
-    //% blockId="TM1637_create" block="CLK %clk|DIO %dio|亮度 %intensity|数码管位数 %count"
+    //% blockId="TM1637_create" block="引脚 CLK %clk|引脚 DIO %dio|亮度 %intensity|数码管位数 %count"
     export function create(clk: DigitalPin, dio: DigitalPin, intensity: number, count: number): TM1637LEDs {
         let tm = new TM1637LEDs();
         tm.clk = clk;
