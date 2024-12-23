@@ -141,11 +141,12 @@ namespace TM1637 {
                 this._dat(0, 0x40) // '-'
                 num = -num
             }
-            else
-                this.showbit(Math.idiv(num, 1000) % 10)
-            this.showbit(num % 10, 3)
-            this.showbit(Math.idiv(num, 10) % 10, 2)
-            this.showbit(Math.idiv(num, 100) % 10, 1)
+            else {
+                this.showbit(0, Math.idiv(num, 1000) % 10)
+                this.showbit(3, num % 10)
+                this.showbit(2, Math.idiv(num, 10) % 10)
+                this.showbit(1, Math.idiv(num, 100) % 10)
+            }
         }
 
         /**
@@ -161,10 +162,10 @@ namespace TM1637 {
                 num = -num
             }
             else
-                this.showbit((num >> 12) % 16)
-            this.showbit(num % 16, 3)
-            this.showbit((num >> 4) % 16, 2)
-            this.showbit((num >> 8) % 16, 1)
+                this.showbit(0, (num >> 12) % 16)
+            this.showbit(3, num % 16)
+            this.showbit(2, (num >> 4) % 16)
+            this.showbit(1, (num >> 8) % 16)
         }
 
         /**
